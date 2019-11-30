@@ -1,0 +1,38 @@
+#include<stdio.h>
+static int daytab[2][13]={{0,31,28,31,30,31,30,31,31,30,31,30,31},{0,31,29,31,30,31,30,31,31,30,31,30,31}};
+void MENU()
+{
+    printf("1、将年月日转化成某年的第几天\n");
+    printf("2、退出\n");
+}
+void Exchange1(int year,int month, int day)
+{
+    int i,leap;
+    leap=((year%4==0)&&(year%100!=0)||year%400==0);
+    for(i=1; i<month; i++)
+    {
+        day=day+daytab[leap][i];
+    }
+    printf("这是那一年的第%d天",day);
+}
+int main()
+{
+    MENU();
+    int answer;
+    int year, month, day;
+    printf("输出你的选择: ");
+    scanf("%d",&answer);
+    switch (answer)
+    {
+    case 1:
+            printf("请分别输入年月日\n");
+            scanf("%d %d %d",&year, &month, &day);
+            Exchange1(year,month,day);
+            break;
+    case 2:
+            break;
+    default:
+        printf("输入错误");
+        break;
+    }
+}
